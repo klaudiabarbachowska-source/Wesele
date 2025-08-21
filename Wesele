@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Klaudia i Grzegorz</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      background: #faf9f6;
+      color: #333;
+      text-align: center;
+    }
+    header {
+      background: linear-gradient(to right, #e6d9c9, #c29b6f);
+      color: white;
+      padding: 50px 20px;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    section {
+      padding: 40px 20px;
+    }
+    /* Odliczanie */
+    #countdown {
+      font-size: 2rem;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #c29b6f;
+    }
+    /* Galeria */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    /* Video */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 80%;
+      margin: 20px auto;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Klaudia & Grzegorz</h1>
+    <p>Zapraszamy na nasze wesele!</p>
+    <p><strong>22 sierpnia 2026</strong></p>
+    <div id="countdown"></div>
+  </header>
+
+  <section>
+    <h2>Nasza historia</h2>
+    <p>Poznaj naszą drogę do tego wyjątkowego dnia ❤️</p>
+  </section>
+
+  <section>
+    <h2>Filmik</h2>
+    <div class="video-container">
+      <!-- Wstaw link do YouTube albo innego filmiku -->
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+              frameborder="0" allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <section>
+    <h2>Galeria zdjęć</h2>
+    <div class="gallery">
+      <img src="https://picsum.photos/400/300?random=1" alt="Zdjęcie 1">
+      <img src="https://picsum.photos/400/300?random=2" alt="Zdjęcie 2">
+      <img src="https://picsum.photos/400/300?random=3" alt="Zdjęcie 3">
+      <img src="https://picsum.photos/400/300?random=4" alt="Zdjęcie 4">
+      <img src="https://picsum.photos/400/300?random=5" alt="Zdjęcie 5">
+    </div>
+  </section>
+
+
+  <script>
+    // --- Odliczanie ---
+    const weddingDate = new Date("August 22, 2026 17:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+
+    setInterval(function() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        countdown.innerHTML = "🎉 Nadszedł wielki dzień!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = days + " dni " + hours + "h " 
+        + minutes + "m " + seconds + "s ";
+    }, 1000);
+  </script>
+</body>
+</html>
